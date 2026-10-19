@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="hi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#3A1428" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>INTIQ Rewards · Become a Founding Store</title>
+    <meta name="description" content="Something new is coming for innerwear shopkeepers. The first 500 shops become Founding Stores." />
+
+    <!-- what WhatsApp, SMS apps and email show when the link is shared -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="INTIQ Rewards" />
+    <meta property="og:title" content="Become a Founding Store · INTIQ Rewards" />
+    <meta property="og:description" content="Something new is coming for innerwear shopkeepers. The first 500 shops become Founding Stores." />
+    <meta property="og:image" content="/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script>
+      /* Follows the phone's light or dark setting before the first paint. */
+      (function () {
+        var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

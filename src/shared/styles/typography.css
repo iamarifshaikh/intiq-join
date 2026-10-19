@@ -1,0 +1,37 @@
+/* Type tokens: two families, and one scale used everywhere. */
+
+:root {
+  --font-ui: 'Urbanist', 'Noto Sans Devanagari', 'Noto Sans Gujarati', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Instrument Serif', 'Iowan Old Style', Georgia, serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  /* body and interface */
+  --text-2xs: 11px;
+  --text-xs: 12px;
+  --text-sm: 13.5px;
+  --text-md: 15px;
+  --text-lg: 17px;
+  --text-xl: 19px;
+  --text-2xl: 22px;
+  --text-3xl: 30px;
+
+  /* display (Instrument Serif), fluid between phone-sized desktop windows and wide screens */
+  --display-sm: 34px;
+  --display-md: clamp(40px, 4.4vw, 60px);
+  --display-lg: clamp(44px, 5vw, 76px);
+  --display-xl: clamp(60px, 7.6vw, 124px);
+  --display-2xl: clamp(110px, 16vw, 240px);
+
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --leading-tight: 1;
+  --leading-snug: 1.2;
+  --leading-body: 1.6;
+
+  --tracking-tight: -0.02em;
+  --tracking-eyebrow: 0.12em;
+}

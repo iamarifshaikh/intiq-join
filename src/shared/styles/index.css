@@ -1,0 +1,7 @@
+/* All design tokens. Imported once, by src/styles/global.css. */
+@import './colors.css';
+@import './typography.css';
+@import './spacing.css';
+@import './radius.css';
+@import './elevation.css';
+@import './motion.css';

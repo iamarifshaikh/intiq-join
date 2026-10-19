@@ -1,0 +1,128 @@
+/* Colour tokens. The only place colours are defined: everything else uses var(--…).
+   Light is the default; [data-theme='dark'] on <html> switches every token at once.
+   The theme attribute is set before first paint by the script in index.html. */
+
+:root {
+  /* surfaces */
+  --canvas: #f4f2f1;
+  --surface: #ffffff;
+  --surface-2: #faf8f7;
+  --sunken: #eeeae8;
+  --glass: rgba(255, 255, 255, 0.72);
+
+  /* lines */
+  --line: #e7e2df;
+  --line-2: #d8d1cd;
+
+  /* text */
+  --ink: #1c1a1f;
+  --ink-2: #625c64;
+  --ink-3: #9c959e;
+
+  /* brand: mulberry */
+  --brand: #6b2a4c;
+  --brand-2: #8a3d65;
+  --brand-soft: #f3e6ec;
+  --brand-ink: #5a2140;
+
+  /* accents, each with a soft background and a readable ink */
+  --peri: #5b7fd6;
+  --peri-soft: #e4ebfa;
+  --peri-ink: #2c4c94;
+  --lime: #c9f17e;
+  --lime-deep: #2f470a;
+  --lime-soft: #edf8d4;
+  --lime-ink: #3d5a0e;
+  --sky: #bcdbfa;
+  --sky-soft: #e4f0fd;
+  --sky-ink: #234c8c;
+  --champ: #e3c893;
+  --champ-soft: #f8efdc;
+  --champ-ink: #6b4f17;
+  --rose-soft: #fadfe3;
+  --rose-ink: #8e2a3e;
+  --butter-soft: #fbf1d2;
+  --butter-ink: #7a5a0b;
+
+  /* the main dark button */
+  --btn: #1c1a1f;
+  --btn-ink: #ffffff;
+
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --canvas: #121014;
+  --surface: #1b181d;
+  --surface-2: #221e24;
+  --sunken: #171419;
+  --glass: rgba(27, 24, 29, 0.74);
+
+  --line: #2e2a31;
+  --line-2: #3d3741;
+
+  --ink: #f2eef1;
+  --ink-2: #b3abb5;
+  --ink-3: #7e7681;
+
+  --brand: #e08ab3;
+  --brand-2: #c46c98;
+  --brand-soft: #3a1f2e;
+  --brand-ink: #f4c6db;
+
+  --peri: #8aa5ec;
+  --peri-soft: #1f2a45;
+  --peri-ink: #c3d2fa;
+  --lime-soft: #25301a;
+  --lime-ink: #d6f3a2;
+  --sky: #5f86b8;
+  --sky-soft: #1b2a3d;
+  --sky-ink: #bbd6f7;
+  --champ: #d9bc82;
+  --champ-soft: #33291a;
+  --champ-ink: #ebd3a2;
+  --rose-soft: #3a1e25;
+  --rose-ink: #f2b6c0;
+  --butter-soft: #332a14;
+  --butter-ink: #f0d98e;
+
+  --btn: #f2eef1;
+  --btn-ink: #1c1a1f;
+
+  color-scheme: dark;
+}
+
+/* Brand art: fixed colours for the mulberry cards, silk and fabric swatches.
+   They read the same in both themes, so they are not switched above. */
+:root {
+  --mulberry-950: #2a0f1f;
+  --mulberry-900: #3e1429;
+  --mulberry-800: #5a1f3e;
+  --mulberry-700: #6b2a4c;
+  --mulberry-600: #7e3358;
+  --mulberry-500: #8a3d65;
+  --mulberry-400: #a24e78;
+  --blush-500: #b45f88;
+  --blush-400: #c9829f;
+  --blush-200: #f3c9db;
+  --blush-100: #e9d3de;
+  --gold-800: #5e3f10;
+  --gold-600: #8c6a2f;
+  --gold-500: #b98c3f;
+  --gold-400: #c9a461;
+  --gold-300: #d9b26a;
+  --gold-100: #f7e5bf;
+  --gold-50: #fff6e2;
+  --on-dark: #ffffff;
+  --on-dark-soft: rgba(255, 255, 255, 0.75);
+
+  --gradient-wallet:
+    radial-gradient(120% 140% at 100% 0%, var(--blush-400) 0%, rgba(201, 130, 159, 0) 45%),
+    linear-gradient(135deg, var(--mulberry-800) 0%, var(--mulberry-600) 55%, var(--mulberry-400) 100%);
+  --gradient-mulberry-band:
+    radial-gradient(90% 120% at 100% 0%, var(--blush-500) 0%, rgba(180, 95, 136, 0) 55%),
+    linear-gradient(135deg, var(--mulberry-900), var(--mulberry-700));
+  --gradient-cashback:
+    radial-gradient(120% 90% at 100% 0%, var(--blush-400) 0%, rgba(201, 130, 159, 0) 50%),
+    linear-gradient(150deg, var(--mulberry-900), var(--mulberry-700) 60%, var(--mulberry-500));
+}

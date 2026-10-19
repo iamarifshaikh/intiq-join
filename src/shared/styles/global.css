@@ -1,0 +1,81 @@
+@import './index.css';
+
+/* The journey's own palette. The story is always deep plum; the form follows the phone's light or
+   dark setting. Kept here so every screen draws from the same few colours. */
+:root {
+  --j-plum-1: #3a1428;
+  --j-plum-2: #6b2a4c;
+  --j-plum-3: #8a3d65;
+  --j-gold: #f6e5be;
+  --j-gold-2: #ddbc7e;
+  --j-story-bg: radial-gradient(120% 80% at 100% 0%, rgba(201, 130, 159, 0.55), transparent 60%),
+    linear-gradient(170deg, var(--j-plum-1), var(--j-plum-2) 60%, var(--j-plum-3));
+
+  --j-bg: #fbf7f4;
+  --j-surface: #ffffff;
+  --j-ink: #1c1a1f;
+  --j-ink-2: #5f5762;
+  --j-ink-3: #8a828c;
+  --j-line: #e7dfdb;
+  --j-line-2: #d8cfcb;
+  --j-accent: #6b2a4c;
+  --j-accent-soft: #f3e6ec;
+  --j-accent-ink: #3a1428;
+  --j-ok: #2f8a3a;
+}
+
+:root[data-theme='dark'] {
+  --j-bg: #141015;
+  --j-surface: #1e1820;
+  --j-ink: #f4eef2;
+  --j-ink-2: #c3b9c4;
+  --j-ink-3: #948a95;
+  --j-line: #30282f;
+  --j-line-2: #463c44;
+  --j-accent: #e08ab3;
+  --j-accent-soft: #3a1f2e;
+  --j-accent-ink: #f4c6db;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--j-bg);
+  color: var(--j-ink);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  text-size-adjust: 100%;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 3px solid var(--j-gold-2);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

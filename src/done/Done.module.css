@@ -1,0 +1,100 @@
+.head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 8px;
+}
+
+.tick {
+  width: 64px;
+  height: 64px;
+  color: var(--j-ok);
+  animation: pop 0.5s cubic-bezier(0.3, 1.5, 0.6, 1);
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+}
+
+.done {
+  margin: 10px 0 0;
+  color: var(--j-ok);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 4px 0 6px;
+  color: var(--j-ink);
+  font-size: clamp(26px, 7vw, 32px);
+  font-weight: 700;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.text {
+  margin: 0;
+  color: var(--j-ink-2);
+  font-size: 18px;
+}
+
+.peekLabel {
+  margin: 26px 0 8px;
+  color: var(--j-ink-3);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.peek {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+/* a sketch of the wallet, softly blurred: something to look forward to, nothing to read yet */
+.wallet {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  background: var(--j-story-bg);
+  color: #fff;
+  filter: blur(3px);
+  transform: scale(1.02);
+}
+
+.wallet span {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.wallet b {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--j-gold);
+  font-size: 30px;
+}
+
+.wallet i {
+  height: 12px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.wallet i:nth-of-type(2) {
+  width: 70%;
+}
+
+.wallet i:nth-of-type(3) {
+  width: 45%;
+}

@@ -1,0 +1,70 @@
+/* English. The shape of this object is the shape every language must have (see Messages). */
+export const en = {
+  langName: 'English',
+  trust: 'We never ask for money, OTP or bank details',
+  forShopkeepers: 'For shopkeepers',
+  listen: 'Listen',
+  next: 'Next',
+  back: 'Back',
+  skipToForm: 'Skip to form',
+  reserve: 'Reserve my place',
+  takesAMinute: 'Takes 1 minute',
+
+  /* the story */
+  inviteTitle: 'Namaste 🙏',
+  inviteText: 'A special invitation for innerwear shopkeepers.',
+  painTitle: 'Every month you buy stock worth lakhs from big brands.',
+  painText: 'What do you get back?',
+  revealTitle: 'Something new is coming.',
+  revealText: 'Every invoice will earn you rewards.',
+  launchingSoon: 'Launching soon',
+  winsTitle: 'Shopkeepers like you could win',
+  wins: ['Gold', 'Trips', 'Cash', 'TV'],
+  volumeTitle: 'How much stock do you buy in a month?',
+  volumeRanges: ['Under ₹50,000', '₹50,000 – 2 lakh', '₹2 – 5 lakh', 'Over ₹5 lakh'],
+  volumeEarnBefore: 'A shop like yours could earn up to',
+  volumeEarnAfter: 'in rewards a year',
+  exampleOnly: 'Example only',
+  foundingTitle: 'Only the first 500 shops become Founding Stores',
+  foundingText: 'with bonus rewards at launch',
+  joined: '{n} shops have already joined',
+
+  /* the form */
+  stepOf: 'Step {n} of {total}',
+  brandsTitle: 'Which brands do you keep?',
+  brandsHint: 'Tap all that you keep',
+  other: 'Other',
+  rewardTitle: 'Which reward would you love?',
+  rewards: ['Cash', 'Gold', 'Trip', 'Phone / TV'],
+  troubleTitle: 'What troubles you in today’s schemes?',
+  troubles: ['Late payment', 'Hard to understand', 'Too little', 'No scheme'],
+  detailsTitle: 'Your details',
+  ownerName: 'Your name',
+  mobile: 'Mobile number',
+  mobileHint: 'Mobile numbers start with 6, 7, 8 or 9',
+  shopName: 'Shop name',
+  state: 'State',
+  chooseState: 'Choose your state',
+  city: 'City',
+  confirmTitle: 'Reserve your place?',
+  consent: 'I agree: INTIQ may use my answers to show brands combined numbers. My shop’s details are never shared without my permission.',
+  sending: 'Saving…',
+  sendFailed: 'Could not save. Please check your internet and try again.',
+  tooMany: 'Too many tries from this phone. Please try again in an hour.',
+  tryAgain: 'Try again',
+  checkDetails: 'Please check your details',
+  editDetails: 'Edit details',
+
+  /* the end */
+  done: 'Done!',
+  foundingStore: 'You are Founding Store {n}',
+  doneText: 'We will message you before launch.',
+  firstLook: 'A first look',
+  share: 'Send to another shopkeeper',
+  linkCopied: 'Link copied',
+
+  /* the left panel on a computer, beside the form */
+  asideForm: 'A few quick taps. Your answers help brands bring you better rewards.',
+}
+
+export type Messages = typeof en

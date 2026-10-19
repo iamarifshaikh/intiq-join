@@ -1,0 +1,355 @@
+/* The journey's small parts. Colours come from the screen they sit in (see Screen.module.css), so
+   the same button reads right on the plum story, the light form and in dark mode. */
+
+/* ---------- logo, language, trust ---------- */
+.logo {
+  width: 32px;
+  height: 32px;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--logo-bg, var(--j-plum-1));
+  color: var(--logo-fg, #fff);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+}
+
+.logo b {
+  color: var(--j-gold-2);
+}
+
+.lang {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--soft-border);
+  border-radius: 999px;
+  background: var(--soft-bg);
+  color: var(--fg);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.trust {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+  padding: 10px 18px 14px;
+  color: var(--fg-3);
+  font-size: 12.5px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.trust svg {
+  flex: none;
+  margin-top: 1px;
+}
+
+.trust a {
+  color: var(--fg-2);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* ---------- progress ---------- */
+.bars {
+  display: flex;
+  gap: 4px;
+}
+
+.bars i {
+  position: relative;
+  flex: 1;
+  height: 3px;
+  overflow: hidden;
+  border-radius: 9px;
+  background: var(--bar-track, rgba(255, 255, 255, 0.28));
+}
+
+.bars i::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--bar-fill, #fff);
+  transform: translateX(-100%);
+}
+
+.bars i.full::after {
+  transform: none;
+}
+
+.bars i.now::after {
+  animation: fill var(--dur) linear forwards;
+}
+
+@keyframes fill {
+  to {
+    transform: none;
+  }
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.dots i {
+  width: 8px;
+  height: 8px;
+  border-radius: 9px;
+  background: var(--j-line-2);
+  transition: all 0.3s;
+}
+
+.dots i.past {
+  background: var(--j-accent);
+}
+
+.dots i.current {
+  width: 24px;
+  background: var(--j-accent);
+}
+
+/* ---------- buttons ---------- */
+.go {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 60px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--go-bg);
+  color: var(--go-fg);
+  font-size: 20px;
+  font-weight: 700;
+  box-shadow: 0 14px 28px -14px rgba(40, 10, 30, 0.6);
+  transition:
+    transform 0.12s,
+    opacity 0.2s;
+}
+
+.go:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.go:disabled {
+  opacity: 0.4;
+  box-shadow: none;
+  cursor: default;
+}
+
+.round {
+  flex: none;
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid var(--soft-border);
+  border-radius: 50%;
+  background: var(--soft-bg);
+  color: var(--fg);
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.speaking {
+  background: var(--go-bg);
+  color: var(--go-fg);
+  border-color: var(--go-bg);
+}
+
+.textButton {
+  padding: 4px 8px 8px;
+  border: 0;
+  background: none;
+  color: var(--fg-3);
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ---------- choices ---------- */
+.tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 118px;
+  padding: 14px 8px;
+  border: 2px solid var(--soft-border);
+  border-radius: 20px;
+  background: var(--soft-bg);
+  color: var(--fg);
+  font-size: 17px;
+  font-weight: 700;
+  text-align: center;
+  transition:
+    border-color 0.15s,
+    background 0.15s,
+    transform 0.1s;
+}
+
+.tile:active {
+  transform: scale(0.97);
+}
+
+.tile.compact {
+  min-height: 68px;
+  padding: 10px 8px;
+}
+
+.tile.picked,
+.option.picked {
+  border-color: var(--pick-border);
+  background: var(--pick-bg);
+  color: var(--pick-fg);
+}
+
+.tick {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 26px;
+  height: 26px;
+  display: none;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--j-accent);
+  color: #fff;
+}
+
+.tile.picked .tick {
+  display: grid;
+}
+
+.pic {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: var(--j-accent-soft);
+  color: var(--j-accent);
+}
+
+.tileLabel {
+  color: var(--brand-colour, inherit);
+  font-size: inherit;
+}
+
+:global([data-theme='dark']) .tileLabel {
+  filter: brightness(1.7) saturate(0.85);
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-height: 62px;
+  padding: 10px 18px;
+  border: 2px solid var(--soft-border);
+  border-radius: 18px;
+  background: var(--soft-bg);
+  color: var(--fg);
+  font-size: 19px;
+  font-weight: 700;
+  text-align: left;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    transform 0.1s;
+}
+
+.option:active {
+  transform: scale(0.98);
+}
+
+/* ---------- fields ---------- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.fieldLabel {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.hint {
+  color: var(--hint-colour, var(--fg-3));
+  font-size: 13.5px;
+}
+
+.input {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 62px;
+  padding: 0 16px;
+  border: 2px solid var(--input-border, var(--j-line));
+  border-radius: 18px;
+  background: var(--j-surface);
+  font-size: 20px;
+  font-weight: 600;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+.input:focus-within {
+  border-color: var(--j-accent);
+  box-shadow: 0 0 0 4px var(--j-accent-soft);
+}
+
+.lead {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 17px;
+  color: var(--j-ink-3);
+}
+
+.input input,
+.input select {
+  flex: 1;
+  min-width: 0;
+  height: 58px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--j-ink);
+  letter-spacing: 0.01em;
+}
+
+.input select {
+  appearance: none;
+  -webkit-appearance: none;
+  font-size: 18px;
+}
+
+.chevron {
+  flex: none;
+  color: var(--j-ink-3);
+}

@@ -1,0 +1,293 @@
+/* ---------- phone first: one column, full height, buttons at the bottom ---------- */
+.screen {
+  /* colours the parts inside read; the story on a phone swaps them for white on plum */
+  --fg: var(--j-ink);
+  --fg-2: var(--j-ink-2);
+  --fg-3: var(--j-ink-3);
+  --go-bg: var(--j-accent);
+  --go-fg: #fff;
+  --soft-border: var(--j-line);
+  --soft-bg: var(--j-surface);
+  --pick-bg: var(--j-accent-soft);
+  --pick-border: var(--j-accent);
+  --pick-fg: var(--j-accent-ink);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  background: var(--j-bg);
+  color: var(--fg);
+}
+
+.story {
+  --fg: #fff;
+  --fg-2: rgba(255, 255, 255, 0.86);
+  --fg-3: rgba(255, 255, 255, 0.7);
+  --go-bg: #fff;
+  --go-fg: var(--j-plum-1);
+  --soft-border: rgba(255, 255, 255, 0.24);
+  --soft-bg: rgba(255, 255, 255, 0.08);
+  --pick-bg: #fff;
+  --pick-border: #fff;
+  --pick-fg: var(--j-plum-1);
+  --logo-bg: #fff;
+  --logo-fg: var(--j-plum-1);
+  background: var(--j-story-bg);
+  color-scheme: dark;
+}
+
+/* the panel's parts become part of the column, so the picture can sit between header and words */
+.panel {
+  display: contents;
+}
+
+.progress {
+  order: 0;
+  padding: calc(env(safe-area-inset-top, 0px) + 12px) 18px 0;
+}
+
+.header {
+  order: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 18px 6px;
+}
+
+.progress + .header {
+  padding-top: 10px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  line-height: 1.2;
+}
+
+.brand small {
+  display: block;
+  font-size: 12px;
+  color: var(--fg-3);
+}
+
+.brand b {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.visual {
+  order: 2;
+  position: relative;
+  display: none;
+}
+
+.story .visual {
+  display: grid;
+  place-items: center;
+  flex: 1;
+  min-height: 190px;
+  padding: 8px 24px;
+}
+
+.visualTop,
+.caption {
+  display: none;
+}
+
+.art {
+  display: grid;
+  place-items: center;
+}
+
+.tap {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border: 0;
+  background: transparent;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tapBack {
+  left: 0;
+  width: 35%;
+}
+
+.tapNext {
+  right: 0;
+  width: 65%;
+}
+
+.body {
+  order: 3;
+  padding: 6px 24px 0;
+  animation: rise 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.form .body,
+.done .body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.actions {
+  order: 4;
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px 8px;
+}
+
+.form .actions,
+.done .actions {
+  background: linear-gradient(180deg, transparent, var(--j-bg) 30%);
+}
+
+.after {
+  order: 5;
+  display: flex;
+  justify-content: center;
+  padding: 0 24px 4px;
+}
+
+.trust {
+  order: 6;
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 14px);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+/* ---------- computer and tablet: two panes ---------- */
+@media (min-width: 900px) {
+  .screen,
+  .story {
+    --fg: var(--j-ink);
+    --fg-2: var(--j-ink-2);
+    --fg-3: var(--j-ink-3);
+    --go-bg: var(--j-accent);
+    --go-fg: #fff;
+    --soft-border: var(--j-line);
+    --soft-bg: var(--j-surface);
+    --pick-bg: var(--j-accent-soft);
+    --pick-border: var(--j-accent);
+    --pick-fg: var(--j-accent-ink);
+    --logo-bg: var(--j-plum-1);
+    --logo-fg: #fff;
+    --bar-track: var(--j-line);
+    --bar-fill: var(--j-accent);
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    min-height: 100vh;
+    background: var(--j-bg);
+    color-scheme: normal;
+  }
+
+  /* the left pane: always plum, the picture large and centred */
+  .visual,
+  .story .visual {
+    order: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 36px 44px;
+    background: var(--j-story-bg);
+    color: #fff;
+    overflow: hidden;
+    --logo-bg: #fff;
+    --logo-fg: var(--j-plum-1);
+  }
+
+  .visualTop {
+    display: flex;
+  }
+
+  .art {
+    flex: 1;
+    transform: scale(1.25);
+  }
+
+  .caption {
+    display: block;
+    max-width: 420px;
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 30px;
+    line-height: 1.15;
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .tap {
+    display: none;
+  }
+
+  /* the right pane: a calm reading column */
+  .panel {
+    order: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 0 clamp(28px, 5vw, 72px);
+  }
+
+  .progress {
+    padding: 32px 0 0;
+  }
+
+  .header {
+    padding: 18px 0 0;
+  }
+
+  .header .brand > :first-child {
+    display: none;
+  }
+
+  .body,
+  .form .body,
+  .done .body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    max-width: 520px;
+    padding: 32px 0 8px;
+    overflow: visible;
+  }
+
+  .actions,
+  .form .actions,
+  .done .actions {
+    position: static;
+    width: 100%;
+    max-width: 520px;
+    padding: 12px 0 8px;
+    background: none;
+  }
+
+  .after {
+    justify-content: flex-start;
+    padding: 0;
+  }
+
+  .trust {
+    justify-content: flex-start;
+    padding: 24px 0 28px;
+    text-align: left;
+  }
+}
