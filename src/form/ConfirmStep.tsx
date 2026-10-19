@@ -25,7 +25,17 @@ export function ConfirmStep() {
 
   /* a stale visit (or a skipped step) can arrive here with a gap: send them back to it */
   const details = detailsSchema.safeParse(answers)
-  const firstGap = !answers.brands.length ? 'brands' : !answers.preferredReward ? 'reward' : !answers.mainTrouble ? 'trouble' : !details.success ? 'details' : null
+  const firstGap = !answers.monthlyPurchase
+    ? 'volume'
+    : !answers.brands.length
+      ? 'brands'
+      : !answers.preferredReward
+        ? 'reward'
+        : !answers.mainTrouble
+          ? 'trouble'
+          : !details.success
+            ? 'details'
+            : null
 
   const refused = submit.error instanceof ApiError ? submit.error.fieldErrors.some((f) => (DETAIL_FIELDS as string[]).includes(f.field)) : false
   const tooMany = submit.error instanceof ApiError && submit.error.status === 429
@@ -84,7 +94,7 @@ export function ConfirmStep() {
             <PencilLine size={15} aria-hidden /> {t.editDetails}
           </TextButton>
         </div>
-        <div className={styles.chips}>
+        <div className={styles.chips} translate="no">
           {brandNames.map((name) => (
             <span key={name}>{name}</span>
           ))}

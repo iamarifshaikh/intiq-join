@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { ArrowRight, Banknote, CalendarX, Coins, HelpCircle, Plane, Puzzle, Smartphone, Ban, Gift, Frown, Store } from 'lucide-react'
 import { useJourney } from '@/journey/store'
 import { useConfig } from '@/shared/api'
+import { brandLogo } from '@/shared/data/brandLogos'
 import { MAIN_TROUBLE, OTHER_BRAND, PREFERRED_REWARD, brandColour } from '@/shared/data/catalog'
 import { useT } from '@/shared/i18n/useT'
 import { GoButton } from '@/shared/ui/Buttons'
@@ -40,7 +41,7 @@ export function BrandsStep() {
     >
       <div className={styles.brandGrid}>
         {brands.map((b, k) => (
-          <Tile key={b.code} compact picked={picked.includes(b.code)} onClick={() => toggle(b.code)} label={b.name} colour={brandColour(k)} />
+          <Tile key={b.code} compact picked={picked.includes(b.code)} onClick={() => toggle(b.code)} label={b.name} colour={brandColour(k)} logo={brandLogo(b.code)} />
         ))}
         <Tile compact picked={picked.includes(OTHER_BRAND)} onClick={() => toggle(OTHER_BRAND)} label={t.other} />
       </div>

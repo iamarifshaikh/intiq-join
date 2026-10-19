@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react'
 import clsx from 'clsx'
 import { LanguageSwitch } from '@/shared/ui/LanguageSwitch'
-import { Logo } from '@/shared/ui/Logo'
 import { TrustStrip } from '@/shared/ui/TrustStrip'
 import { useT } from '@/shared/i18n/useT'
 import styles from './Screen.module.css'
@@ -33,9 +32,6 @@ export function Screen({ tone, art, caption, progress, actions, after, onTapBack
   return (
     <div className={clsx(styles.screen, styles[tone])}>
       <aside className={styles.visual}>
-        <div className={styles.visualTop} aria-hidden>
-          <Logo />
-        </div>
         <div className={styles.art}>{art}</div>
         {caption && <p className={styles.caption}>{caption}</p>}
         {onTapBack && <button type="button" className={clsx(styles.tap, styles.tapBack)} onClick={onTapBack} aria-label={t.back} tabIndex={-1} />}
@@ -45,13 +41,8 @@ export function Screen({ tone, art, caption, progress, actions, after, onTapBack
       <main className={styles.panel}>
         {progress && <div className={styles.progress}>{progress}</div>}
         <header className={styles.header}>
-          <span className={styles.brand}>
-            <Logo />
-            <span>
-              <small>{t.forShopkeepers}</small>
-              <b>INTIQ Rewards</b>
-            </span>
-          </span>
+          {/* no company name or mark: the page speaks for the brands, not for us */}
+          <span className={styles.brand}>{t.forShopkeepers}</span>
           <LanguageSwitch />
         </header>
         <div className={styles.body}>

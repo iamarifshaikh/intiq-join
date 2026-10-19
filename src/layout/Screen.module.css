@@ -31,8 +31,6 @@
   --pick-bg: #fff;
   --pick-border: #fff;
   --pick-fg: var(--j-plum-1);
-  --logo-bg: #fff;
-  --logo-fg: var(--j-plum-1);
   background: var(--j-story-bg);
   color-scheme: dark;
 }
@@ -61,24 +59,15 @@
 }
 
 .brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
   min-width: 0;
+  color: var(--fg-2);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   line-height: 1.2;
 }
 
-.brand small {
-  display: block;
-  font-size: 12px;
-  color: var(--fg-3);
-}
 
-.brand b {
-  display: block;
-  font-size: 14px;
-  font-weight: 700;
-}
 
 .visual {
   order: 2;
@@ -94,7 +83,6 @@
   padding: 8px 24px;
 }
 
-.visualTop,
 .caption {
   display: none;
 }
@@ -184,8 +172,6 @@
     --pick-bg: var(--j-accent-soft);
     --pick-border: var(--j-accent);
     --pick-fg: var(--j-accent-ink);
-    --logo-bg: var(--j-plum-1);
-    --logo-fg: #fff;
     --bar-track: var(--j-line);
     --bar-fill: var(--j-accent);
     display: grid;
@@ -208,13 +194,8 @@
     background: var(--j-story-bg);
     color: #fff;
     overflow: hidden;
-    --logo-bg: #fff;
-    --logo-fg: var(--j-plum-1);
   }
 
-  .visualTop {
-    display: flex;
-  }
 
   .art {
     flex: 1;
@@ -253,9 +234,6 @@
     padding: 18px 0 0;
   }
 
-  .header .brand > :first-child {
-    display: none;
-  }
 
   .body,
   .form .body,

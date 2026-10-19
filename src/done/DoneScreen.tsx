@@ -21,7 +21,7 @@ export function DoneScreen() {
     /* the plain link, without this visit's ?ch=, so the next shop starts fresh */
     const url = location.origin + location.pathname
     try {
-      if (navigator.share) return await navigator.share({ title: 'INTIQ Rewards', text: t.inviteTitle, url })
+      if (navigator.share) return await navigator.share({ title: t.foundingTitle, text: t.inviteText, url })
       await navigator.clipboard.writeText(url)
       setCopied(true)
       window.setTimeout(() => setCopied(false), 2400)
@@ -55,7 +55,7 @@ export function DoneScreen() {
       <p className={styles.peekLabel}>{t.firstLook}</p>
       <div className={styles.peek} aria-hidden>
         <div className={styles.wallet}>
-          <span>{shop || 'INTIQ Rewards'}</span>
+          <span>{shop}</span>
           <b>
             <Coins size={22} /> {formatINR(12450)}
           </b>

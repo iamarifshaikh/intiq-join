@@ -1,27 +1,7 @@
 /* The journey's small parts. Colours come from the screen they sit in (see Screen.module.css), so
    the same button reads right on the plum story, the light form and in dark mode. */
 
-/* ---------- logo, language, trust ---------- */
-.logo {
-  width: 32px;
-  height: 32px;
-  flex: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: var(--logo-bg, var(--j-plum-1));
-  color: var(--logo-fg, #fff);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
-}
-
-.logo b {
-  color: var(--j-gold-2);
-}
-
+/* ---------- language, trust ---------- */
 .lang {
   flex: none;
   display: inline-flex;
@@ -248,6 +228,37 @@
   border-radius: 16px;
   background: var(--j-accent-soft);
   color: var(--j-accent);
+}
+
+/* a brand with a logo: the logo carries the tile, the name sits small beneath it */
+.brandLogo {
+  width: 100%;
+  height: 40px;
+  display: grid;
+  place-items: center;
+}
+
+.brandLogo img {
+  max-width: 88%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.withLogo {
+  gap: 6px;
+}
+
+.withLogo .tileLabel {
+  font-size: 12.5px;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+/* logos are drawn for white paper: on a dark phone the logo sits on a soft white plate */
+:global([data-theme='dark']) .brandLogo {
+  padding: 4px 6px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.92);
 }
 
 .tileLabel {

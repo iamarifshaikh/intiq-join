@@ -24,6 +24,8 @@ export function StoryCard({ step }: { step: StoryStep }) {
   const index = STORY.indexOf(step)
   const running = useAutoplay(CARD_MS, true, next)
   const last = step === 'founding'
+  /* skipping jumps past the pitch, not past the one story question the form needs */
+  const skip = () => go(useJourney.getState().answers.monthlyPurchase ? 'brands' : 'volume')
 
   const card: Record<StoryStep, { art: ReactNode; title: string; text?: string; extra?: ReactNode }> = {
     invite: { art: <InviteArt />, title: t.inviteTitle, text: t.inviteText },
@@ -73,7 +75,7 @@ export function StoryCard({ step }: { step: StoryStep }) {
           </GoButton>
         </>
       }
-      after={last ? <span className={styles.minute}>{t.takesAMinute}</span> : <TextButton onClick={() => go('brands')}>{t.skipToForm}</TextButton>}
+      after={last ? <span className={styles.minute}>{t.takesAMinute}</span> : <TextButton onClick={skip}>{t.skipToForm}</TextButton>}
     >
       <h1 className={styles.title}>{title}</h1>
       {text && <p className={step === 'pain' ? styles.strong : styles.text}>{text}</p>}
