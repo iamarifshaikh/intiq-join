@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { SPEECH_LANG, type Lang } from '@/shared/i18n'
 
 /* Reads a screen aloud. Today it is the browser's own speech; recorded clips (a real person's voice)
-   can replace it here without touching any screen. While it speaks, the story stops moving on. */
+   can replace it here without touching any screen.  */
 
 interface VoiceState {
   speaking: boolean

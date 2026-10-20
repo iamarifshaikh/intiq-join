@@ -6,43 +6,39 @@ import { useT } from '@/shared/i18n/useT'
 import styles from './Screen.module.css'
 
 interface ScreenProps {
-  /** story cards are deep plum on a phone; the form and the end follow the phone's light or dark setting */
-  tone: 'story' | 'form' | 'done'
-  /** the picture: in the flow on a phone (story only), the whole left pane on a computer */
+  /** every screen follows the phone's light or dark setting; done adds a little celebration */
+  tone: 'form' | 'done'
+  /** the picture: the whole left pane on a computer (a phone has no room for it) */
   art: ReactNode
   /** a line under the picture on a computer */
   caption?: ReactNode
-  /** progress: story bars or form dots */
+  /** progress dots */
   progress?: ReactNode
   /** the buttons at the bottom */
   actions: ReactNode
-  /** under the buttons, e.g. "Skip to form" */
+  /** under the buttons, e.g. a hint */
   after?: ReactNode
-  /** story only: tapping the left or right of the picture goes back or on, like WhatsApp Status */
-  onTapBack?: () => void
-  onTapNext?: () => void
   children: ReactNode
 }
 
 /* One screen of the journey. A phone gets one full-height column with the buttons in thumb reach.
    From 900px wide (a computer, a tablet) the same screen becomes two panes: the picture on the left
    in deep plum, the words and choices on the right. Only the arrangement changes, never the content. */
-export function Screen({ tone, art, caption, progress, actions, after, onTapBack, onTapNext, children }: ScreenProps) {
+export function Screen({ tone, art, caption, progress, actions, after, children }: ScreenProps) {
   const t = useT()
   return (
     <div className={clsx(styles.screen, styles[tone])}>
       <aside className={styles.visual}>
         <div className={styles.art}>{art}</div>
         {caption && <p className={styles.caption}>{caption}</p>}
-        {onTapBack && <button type="button" className={clsx(styles.tap, styles.tapBack)} onClick={onTapBack} aria-label={t.back} tabIndex={-1} />}
-        {onTapNext && <button type="button" className={clsx(styles.tap, styles.tapNext)} onClick={onTapNext} aria-label={t.next} tabIndex={-1} />}
       </aside>
 
       <main className={styles.panel}>
         {progress && <div className={styles.progress}>{progress}</div>}
         <header className={styles.header}>
-          {/* no company name or mark: the page speaks for the brands, not for us */}
-          <span className={styles.brand}>{t.forShopkeepers}</span>
+          <span className={styles.brand} translate="no">
+            INTIQ <span>REWARDS</span>
+          </span>
           <LanguageSwitch />
         </header>
         <div className={styles.body}>
@@ -51,6 +47,7 @@ export function Screen({ tone, art, caption, progress, actions, after, onTapBack
         <div className={styles.actions}>{actions}</div>
         {after && <div className={styles.after}>{after}</div>}
         <TrustStrip className={styles.trust} />
+        <p className={styles.footer}>{t.footer}</p>
       </main>
     </div>
   )

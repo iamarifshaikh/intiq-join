@@ -1,12 +1,14 @@
-/* The early-access API, as agreed in the backend brief. Field names are camelCase as in the rest of
-   the backend; check them against the backend agent's API summary once it is out.
+/* The early-access API, survey v2 (docs/backend-v2-prompt.md). Field names are camelCase as in the rest
+   of the backend; check them against the backend agent's updated docs/early-access/02-api.md.
      GET  /api/v1/public/early-access/config
      POST /api/v1/public/early-access/responses
      POST /api/v1/public/early-access/events */
 
-export type MonthlyPurchase = 'UNDER_50K' | 'FROM_50K_TO_2L' | 'FROM_2L_TO_5L' | 'OVER_5L'
-export type PreferredReward = 'CASH' | 'GOLD' | 'TRIP' | 'PHONE_TV'
-export type MainTrouble = 'LATE_PAYMENT' | 'HARD_TO_UNDERSTAND' | 'TOO_LITTLE' | 'NO_SCHEME'
+export type StoreType = 'INNERWEAR_SPECIALIST' | 'MULTI_BRAND_GARMENT' | 'DEPARTMENT_STORE' | 'SPORTSWEAR_ACTIVEWEAR' | 'WHOLESALE_RETAIL' | 'OTHER'
+export type MonthlyPurchase = 'UNDER_50K' | 'FROM_50K_TO_2L' | 'FROM_2L_TO_5L' | 'OVER_5L' | 'PREFER_NOT_TO_SAY'
+export type PurchaseMethod = 'DIRECT_FROM_BRANDS' | 'DISTRIBUTORS' | 'WHOLESALERS' | 'COMPANY_SALES_REPS' | 'ONLINE_B2B'
+export type RewardInterest = 'YES' | 'MAYBE' | 'NO'
+export type JoinInterest = 'YES' | 'CONTACT_ME' | 'NOT_NOW'
 export type Channel = 'WHATSAPP' | 'SMS' | 'EMAIL' | 'UNKNOWN'
 export type ApiLanguage = 'HI' | 'MR' | 'GU' | 'EN'
 
@@ -22,15 +24,23 @@ export interface SubmitResponseRequest {
   shopName: string
   state: string
   city: string
+  storeType: StoreType
+  monthlyPurchase: MonthlyPurchase
+  purchaseMethods: PurchaseMethod[]
   /** brand codes, plus OTHER */
   brands: string[]
-  monthlyPurchase: MonthlyPurchase
-  preferredReward: PreferredReward
-  mainTrouble: MainTrouble
+  /** optional free text, sent as null when blank */
+  otherBrands: string | null
+  suggestedBrands: string | null
+  rewardInterest: RewardInterest
+  joinInterest: JoinInterest
   channel: Channel
   language: ApiLanguage
+  /** the "I confirm I am a retailer / business owner" tick, shown with the privacy note */
   consentGiven: true
   consentVersion: string
+  /** "send me INTIQ Rewards updates": optional */
+  updatesConsent: boolean
   /** honeypot: always empty from a real person */
   website: ''
 }
@@ -41,7 +51,7 @@ export interface SubmitResponseResult {
   updated: boolean
 }
 
-export type JourneyEventType = 'OPENED' | 'STORY_CARD' | 'FORM_STEP' | 'SUBMITTED'
+export type JourneyEventType = 'OPENED' | 'FORM_STEP' | 'SUBMITTED'
 
 export interface JourneyEvent {
   visitId: string

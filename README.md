@@ -1,7 +1,7 @@
 # intiq-join
 
-The retailer early-access page: a short story that plays by itself, five quick form steps, and the
-Founding Store moment. Hindi by default, with Marathi, Gujarati and English. Full-screen on a phone, two panes on a computer.
+The retailer survey (the client's format, intiq_retailer_survey_v2): one welcome screen, eight short
+steps, and a thank-you with the retailer's Founding Store number. Hindi by default, with Marathi, Gujarati and English. Full-screen on a phone, two panes on a computer.
 
 ## Run
 
@@ -25,14 +25,15 @@ Links can carry `?ch=whatsapp|sms|email` (which blast it came from) and `?lang=h
 ```
 src/
   journey/   steps.ts (the order), store.ts (answers, saved in the browser), Journey.tsx (which screen)
-  story/     the six story cards and their pictures
-  form/      brands, reward, trouble, details, confirm
-  done/      Founding Store #N
+  welcome/   the welcome screen (the client's invitation, laid out)
+  form/      confirm, details, purchase, how they buy, brands, rewards, invitation, review
+  done/      thank-you + Founding Store #N
   layout/    Screen: the one layout every screen uses (phone column / computer two panes)
-  shared/    api (port + http + mock), i18n (hi, mr, en), ui, voice, tracking, styles
+  shared/    api (port + http + mock), i18n (hi, mr, gu, en), ui (incl. the state Picker), art, voice, tracking, styles
 ```
 
 - Adding or reordering a step: `journey/steps.ts` plus one entry in `Journey.tsx`.
+- The backend changes this format needs: `docs/backend-v2-prompt.md`.
 - Changing words: `shared/i18n/en.ts` (the keys), then the same key in `hi.ts`, `mr.ts` and `gu.ts`; the types
   refuse a missing one.
 - Switching to the real backend needs no code change, only `VITE_API_MODE=http`.

@@ -3,7 +3,7 @@ import { formatINR } from '@/shared/format'
 import { fill } from '@/shared/i18n'
 import { cleanMobile, detailsSchema } from './details'
 
-const good = { ownerName: 'Ramesh', mobile: '9876543210', shopName: 'Shree Stores', state: 'Maharashtra', city: 'Pune' }
+const good = { ownerName: 'Ramesh', mobile: '9876543210', shopName: 'Shree Stores', state: 'Maharashtra', city: 'Pune', storeType: 'INNERWEAR_SPECIALIST' }
 
 describe('cleanMobile', () => {
   it('keeps ten digits and drops +91, spaces and a leading 0', () => {
@@ -22,6 +22,11 @@ describe('detailsSchema', () => {
   it('refuses mobiles that cannot be Indian', () => {
     expect(detailsSchema.safeParse({ ...good, mobile: '5876543210' }).success).toBe(false)
     expect(detailsSchema.safeParse({ ...good, mobile: '987654321' }).success).toBe(false)
+  })
+
+  it('needs a store type from the list', () => {
+    expect(detailsSchema.safeParse({ ...good, storeType: undefined }).success).toBe(false)
+    expect(detailsSchema.safeParse({ ...good, storeType: 'KIOSK' }).success).toBe(false)
   })
 
   it('refuses a state not on the list and blank names', () => {

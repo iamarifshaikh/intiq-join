@@ -1,27 +1,25 @@
 import { useState } from 'react'
-import { CheckCircle2, Coins, Send } from 'lucide-react'
+import { Award, Flower2, Send } from 'lucide-react'
 import { useJourney } from '@/journey/store'
 import { Screen } from '@/layout/Screen'
-import { formatINR } from '@/shared/format'
+import { MedalArt } from '@/shared/art/Art'
 import { fill } from '@/shared/i18n'
 import { useT } from '@/shared/i18n/useT'
 import { GoButton, ListenButton } from '@/shared/ui/Buttons'
-import { MedalArt } from '@/story/Art'
 import styles from './Done.module.css'
 
-/** The end: their Founding Store number, a blurred first look at the wallet, and a way to pass it on. */
+/** The client's thank-you, with the retailer's Founding Store number and a way to pass the link on. */
 export function DoneScreen() {
   const t = useT()
   const n = useJourney((s) => s.foundingNumber)
-  const shop = useJourney((s) => s.answers.shopName)
   const [copied, setCopied] = useState(false)
-  const title = fill(t.foundingStore, { n: n ? `#${n}` : '' })
+  const founding = n ? fill(t.foundingStore, { n: `#${n}` }) : null
 
   const share = async () => {
-    /* the plain link, without this visit's ?ch=, so the next shop starts fresh */
+    /* the plain link, without this visit's ?ch=, so the next retailer starts fresh */
     const url = location.origin + location.pathname
     try {
-      if (navigator.share) return await navigator.share({ title: t.foundingTitle, text: t.inviteText, url })
+      if (navigator.share) return await navigator.share({ title: `${t.titleLine1} ${t.titleLine2}`, text: t.news, url })
       await navigator.clipboard.writeText(url)
       setCopied(true)
       window.setTimeout(() => setCopied(false), 2400)
@@ -34,10 +32,16 @@ export function DoneScreen() {
     <Screen
       tone="done"
       art={<MedalArt />}
-      caption={title}
+      caption={
+        <>
+          {t.thanksTitle}
+          <br />
+          <em>{t.thanksLine}</em>
+        </>
+      }
       actions={
         <>
-          <ListenButton text={`${t.done} ${title}. ${t.doneText}`} />
+          <ListenButton text={[t.thanksTitle, t.thanksText, founding, t.thanksSub].filter(Boolean).join('. ')} />
           <GoButton onClick={share}>
             <Send size={20} aria-hidden />
             {copied ? t.linkCopied : t.share}
@@ -46,24 +50,28 @@ export function DoneScreen() {
       }
     >
       <div className={styles.head}>
-        <CheckCircle2 className={styles.tick} aria-hidden />
-        <p className={styles.done}>{t.done}</p>
-        <h1 className={styles.title}>{title}</h1>
-        <p className={styles.text}>{t.doneText}</p>
+        <span className={styles.flower} aria-hidden>
+          <Flower2 />
+        </span>
+        <h1 className={styles.title}>{t.thanksTitle}</h1>
+        <p className={styles.tagline}>{t.thanksTagline}</p>
+        <p className={styles.text}>{t.thanksText}</p>
       </div>
 
-      <p className={styles.peekLabel}>{t.firstLook}</p>
-      <div className={styles.peek} aria-hidden>
-        <div className={styles.wallet}>
-          <span>{shop}</span>
-          <b>
-            <Coins size={22} /> {formatINR(12450)}
-          </b>
-          <i />
-          <i />
-          <i />
+      {founding && (
+        <div className={styles.badge}>
+          <span className={styles.badgeIcon} aria-hidden>
+            <Award />
+          </span>
+          <div>
+            <b>{founding}</b>
+            <span>{t.foundingNote}</span>
+          </div>
         </div>
-      </div>
+      )}
+
+      <p className={styles.line}>{t.thanksLine}</p>
+      <p className={styles.sub}>{t.thanksSub}</p>
     </Screen>
   )
 }

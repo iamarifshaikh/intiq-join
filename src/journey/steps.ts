@@ -1,20 +1,13 @@
-/* The journey, in order. Changing the order or adding a step starts here.
-   - story: six cards that play by themselves (like WhatsApp Status) and end in the form
-   - form:  five short steps, taps first
-   - done:  the Founding Store moment */
+/* The survey, in order: one welcome screen, eight short steps, then thank-you. Changing the order or
+   adding a step starts here (and one entry in Journey.tsx). The funnel counts FORM_STEP by position
+   in STEPS, so welcome is step 1 and review is step 9. */
 
-export type StepId =
-  | 'invite' | 'pain' | 'reveal' | 'wins' | 'volume' | 'founding'
-  | 'brands' | 'reward' | 'trouble' | 'details' | 'confirm'
-  | 'done'
+export type StepId = 'welcome' | 'confirm' | 'details' | 'purchase' | 'methods' | 'brands' | 'reward' | 'join' | 'review' | 'done'
 
-export const STORY: StepId[] = ['invite', 'pain', 'reveal', 'wins', 'volume', 'founding']
-export const FORM: StepId[] = ['brands', 'reward', 'trouble', 'details', 'confirm']
-export const STEPS: StepId[] = [...STORY, ...FORM, 'done']
+export const STEPS: StepId[] = ['welcome', 'confirm', 'details', 'purchase', 'methods', 'brands', 'reward', 'join', 'review', 'done']
 
-export const isStory = (step: StepId) => STORY.includes(step)
-export const isForm = (step: StepId) => FORM.includes(step)
+/** the steps with a question: the dots and "Step n of 8" count these */
+export const QUESTIONS: StepId[] = STEPS.filter((s) => s !== 'welcome' && s !== 'done')
 
-/* How long a story card plays before the next one. The ₹ card waits for an answer, then this long. */
-export const CARD_MS = 6000
-export const AFTER_ANSWER_MS = 3500
+/** 1-based position for the funnel (welcome = 1 … review = 9); done has none */
+export const funnelStep = (step: StepId) => (step === 'done' ? null : STEPS.indexOf(step) + 1)

@@ -6,95 +6,112 @@
   padding-top: 8px;
 }
 
-.tick {
-  width: 64px;
-  height: 64px;
+/* the client's ✿, as a flower in a soft circle that blooms in */
+.flower {
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--j-accent-soft);
   color: var(--j-ok);
-  animation: pop 0.5s cubic-bezier(0.3, 1.5, 0.6, 1);
+  animation: bloom 0.6s cubic-bezier(0.3, 1.5, 0.6, 1);
 }
 
-@keyframes pop {
+.flower svg {
+  width: 40px;
+  height: 40px;
+}
+
+@keyframes bloom {
   from {
-    transform: scale(0.4);
+    transform: scale(0.4) rotate(-40deg);
     opacity: 0;
   }
 }
 
-.done {
-  margin: 10px 0 0;
-  color: var(--j-ok);
-  font-size: 15px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
 .title {
-  margin: 4px 0 6px;
+  margin: 16px 0 6px;
   color: var(--j-ink);
   font-size: clamp(26px, 7vw, 32px);
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.2;
+  letter-spacing: -0.02em;
   text-wrap: balance;
+}
+
+.tagline {
+  margin: 0 0 12px;
+  color: var(--j-accent);
+  font-family: var(--font-display), 'Noto Sans Devanagari', serif;
+  font-size: 21px;
+  font-style: italic;
 }
 
 .text {
   margin: 0;
   color: var(--j-ink-2);
-  font-size: 18px;
+  font-size: 16px;
+  line-height: 1.55;
 }
 
-.peekLabel {
-  margin: 26px 0 8px;
-  color: var(--j-ink-3);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+/* Founding Store #N: a gold badge */
+.badge {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-top: 22px;
+  padding: 16px 18px;
+  border-radius: 22px;
+  background: var(--j-story-bg);
+  color: #fff;
+  box-shadow: 0 22px 44px -26px rgba(58, 20, 40, 0.8);
+  animation: rise 0.5s 0.15s both cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.badgeIcon {
+  flex: none;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--j-plum-1);
+  background: radial-gradient(circle at 35% 30%, #fff3c4, #e8c066 55%, #b88b3a);
+}
+
+.badge b {
+  display: block;
+  color: var(--j-gold);
+  font-size: 22px;
+  letter-spacing: -0.01em;
+}
+
+.badge div span {
+  display: block;
+  margin-top: 2px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 13.5px;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.line {
+  margin: 22px 0 6px;
+  color: var(--j-accent);
+  font-size: 16px;
+  font-weight: 800;
   text-align: center;
 }
 
-.peek {
-  position: relative;
-  overflow: hidden;
-  border-radius: 24px;
-}
-
-/* a sketch of the wallet, softly blurred: something to look forward to, nothing to read yet */
-.wallet {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 20px;
-  background: var(--j-story-bg);
-  color: #fff;
-  filter: blur(3px);
-  transform: scale(1.02);
-}
-
-.wallet span {
+.sub {
+  margin: 0;
+  color: var(--j-ink-3);
   font-size: 14px;
-  opacity: 0.8;
-}
-
-.wallet b {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--j-gold);
-  font-size: 30px;
-}
-
-.wallet i {
-  height: 12px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.18);
-}
-
-.wallet i:nth-of-type(2) {
-  width: 70%;
-}
-
-.wallet i:nth-of-type(3) {
-  width: 45%;
+  text-align: center;
 }

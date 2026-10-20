@@ -1,5 +1,5 @@
 /* The journey's small parts. Colours come from the screen they sit in (see Screen.module.css), so
-   the same button reads right on the plum story, the light form and in dark mode. */
+   the same button reads right in light and dark mode. */
 
 /* ---------- language, trust ---------- */
 .lang {
@@ -39,44 +39,6 @@
   color: var(--fg-2);
   font-weight: 700;
   white-space: nowrap;
-}
-
-/* ---------- progress ---------- */
-.bars {
-  display: flex;
-  gap: 4px;
-}
-
-.bars i {
-  position: relative;
-  flex: 1;
-  height: 3px;
-  overflow: hidden;
-  border-radius: 9px;
-  background: var(--bar-track, rgba(255, 255, 255, 0.28));
-}
-
-.bars i::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: var(--bar-fill, #fff);
-  transform: translateX(-100%);
-}
-
-.bars i.full::after {
-  transform: none;
-}
-
-.bars i.now::after {
-  animation: fill var(--dur) linear forwards;
-}
-
-@keyframes fill {
-  to {
-    transform: none;
-  }
 }
 
 .dots {

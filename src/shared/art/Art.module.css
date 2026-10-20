@@ -1,0 +1,75 @@
+/* the client's ₹ coin: a gold rupee in soft rings, slowly breathing */
+.coin {
+  width: 260px;
+  height: 260px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 16px solid rgba(255, 255, 255, 0.08);
+  background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.03) 65%);
+  box-shadow: 0 0 0 26px rgba(255, 255, 255, 0.03);
+  color: var(--j-gold);
+  font-family: var(--font-display);
+  font-size: 128px;
+  line-height: 1;
+  animation: breathe 5s ease-in-out infinite;
+}
+
+.coin.small {
+  width: 96px;
+  height: 96px;
+  border-width: 7px;
+  box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.04);
+  font-size: 48px;
+}
+
+@keyframes breathe {
+  50% {
+    transform: scale(1.035);
+  }
+}
+
+/* founding and done: a gold medal */
+.medalWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.medal {
+  width: 150px;
+  height: 150px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--j-plum-1);
+  background: radial-gradient(circle at 35% 30%, #fff3c4, #e8c066 55%, #b88b3a);
+  box-shadow:
+    0 0 0 10px rgba(246, 229, 190, 0.18),
+    0 20px 40px -14px rgba(0, 0, 0, 0.6);
+}
+
+.medal svg {
+  width: 70px;
+  height: 70px;
+}
+
+/* the form's left pane on a computer */
+.step {
+  width: 168px;
+  height: 168px;
+  display: grid;
+  place-items: center;
+  border-radius: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--j-gold);
+  box-shadow: 0 0 0 18px rgba(255, 255, 255, 0.04);
+}
+
+.step svg {
+  width: 72px;
+  height: 72px;
+  stroke-width: 1.5;
+}

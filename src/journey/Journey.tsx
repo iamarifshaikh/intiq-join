@@ -1,27 +1,25 @@
-import { useEffect } from 'react'
-import { ConfirmStep } from '@/form/ConfirmStep'
+import { useEffect, type ReactNode } from 'react'
+import { BrandsStep, JoinStep, MethodsStep, PurchaseStep, RewardStep } from '@/form/ChoiceSteps'
 import { DetailsStep } from '@/form/DetailsStep'
-import { BrandsStep, RewardStep, TroubleStep } from '@/form/ChoiceSteps'
+import { RetailerStep } from '@/form/RetailerStep'
+import { ReviewStep } from '@/form/ReviewStep'
 import { DoneScreen } from '@/done/DoneScreen'
-import { StoryCard } from '@/story/StoryCard'
-import { VolumeCard } from '@/story/VolumeCard'
+import { WelcomeScreen } from '@/welcome/WelcomeScreen'
 import { track, trackOpened } from '@/shared/tracking/track'
 import { useVoice } from '@/shared/voice/voice'
-import { FORM, STORY, type StepId } from './steps'
+import { funnelStep, type StepId } from './steps'
 import { useJourney } from './store'
 
-const SCREENS: Record<StepId, () => React.ReactNode> = {
-  invite: () => <StoryCard step="invite" />,
-  pain: () => <StoryCard step="pain" />,
-  reveal: () => <StoryCard step="reveal" />,
-  wins: () => <StoryCard step="wins" />,
-  volume: () => <VolumeCard />,
-  founding: () => <StoryCard step="founding" />,
+const SCREENS: Record<StepId, () => ReactNode> = {
+  welcome: () => <WelcomeScreen />,
+  confirm: () => <RetailerStep />,
+  details: () => <DetailsStep />,
+  purchase: () => <PurchaseStep />,
+  methods: () => <MethodsStep />,
   brands: () => <BrandsStep />,
   reward: () => <RewardStep />,
-  trouble: () => <TroubleStep />,
-  details: () => <DetailsStep />,
-  confirm: () => <ConfirmStep />,
+  join: () => <JoinStep />,
+  review: () => <ReviewStep />,
   done: () => <DoneScreen />,
 }
 
@@ -34,11 +32,11 @@ export function Journey() {
   useEffect(() => {
     useVoice.getState().stop()
     window.scrollTo(0, 0)
-    if (STORY.includes(step)) track('STORY_CARD', STORY.indexOf(step) + 1)
-    else if (FORM.includes(step)) track('FORM_STEP', FORM.indexOf(step) + 1)
+    const position = funnelStep(step)
+    if (position) track('FORM_STEP', position)
     else track('SUBMITTED')
   }, [step])
 
-  const Step = SCREENS[step] ?? SCREENS.invite
+  const Step = SCREENS[step] ?? SCREENS.welcome
   return <Step key={step} />
 }

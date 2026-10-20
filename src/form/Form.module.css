@@ -95,30 +95,6 @@
   font-size: 19px;
 }
 
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 14px;
-  padding-top: 14px;
-  border-top: 1px solid var(--j-line);
-}
-
-.chips span {
-  padding: 5px 12px;
-  border-radius: 999px;
-  background: var(--j-accent-soft);
-  color: var(--j-accent-ink);
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.chips .chipSoft {
-  background: transparent;
-  border: 1px solid var(--j-line-2);
-  color: var(--j-ink-2);
-}
-
 .consent {
   position: relative;
   display: flex;
@@ -178,4 +154,147 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* one-answer questions: wide rows */
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+/* brands: search, the tiles, then the optional text boxes */
+.search {
+  margin-top: 14px;
+}
+
+.count {
+  margin: 10px 0 -6px;
+  color: var(--j-accent);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.extraFields {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 18px;
+}
+
+/* the "I am a retailer" tick carries the step, so it is bigger */
+.consentBig {
+  margin-top: 20px;
+  padding: 18px;
+  font-size: 16.5px;
+  font-weight: 600;
+}
+
+.smallprint {
+  margin: 14px 0 0;
+  color: var(--j-ink-3);
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+/* review: each answer with its own Edit */
+.answers {
+  display: flex;
+  flex-direction: column;
+  margin: 14px 0 0;
+  padding-top: 4px;
+  border-top: 1px solid var(--j-line);
+}
+
+.answers > div {
+  position: relative;
+  padding: 10px 36px 10px 0;
+  border-bottom: 1px solid var(--j-line);
+}
+
+.answers > div:last-child {
+  border-bottom: 0;
+}
+
+.answers dt {
+  color: var(--j-ink-3);
+  font-size: 12.5px;
+  line-height: 1.35;
+}
+
+.answers dd {
+  margin: 2px 0 0;
+  color: var(--j-ink);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.answers .edit {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin: 0;
+  transform: translateY(-50%);
+}
+
+.edit {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 6px;
+  padding: 6px 10px;
+  border: 1px solid var(--j-line-2);
+  border-radius: 99px;
+  background: transparent;
+  color: var(--j-accent);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* store type: six picture tiles instead of a drop-down */
+.group {
+  margin-top: 2px;
+}
+
+.groupLabel {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.typeGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.typeGrid button {
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 10px;
+  min-height: 64px;
+  padding: 10px 12px;
+  font-size: 14.5px;
+  line-height: 1.25;
+  text-align: left;
+}
+
+.typeGrid button > span:nth-child(2) {
+  flex: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+}
+
+.typeGrid button svg {
+  width: 20px;
+  height: 20px;
+}
+
+.bad .typeGrid button {
+  border-color: #c2410c;
 }

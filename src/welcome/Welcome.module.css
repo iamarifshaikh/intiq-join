@@ -1,0 +1,291 @@
+/* language picker: four quiet pills, the chosen one filled */
+.langs {
+  margin-bottom: 18px;
+}
+
+.langLabel {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--j-ink-3);
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.langRow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+  padding: 4px;
+  border: 1px solid var(--j-line);
+  border-radius: 16px;
+  background: var(--j-surface);
+}
+
+.lang {
+  min-height: 42px;
+  padding: 0 4px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--j-ink-2);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.langOn {
+  background: var(--j-accent);
+  color: #fff;
+  box-shadow: 0 6px 16px -8px rgba(58, 20, 40, 0.6);
+}
+
+/* the hero: their headline on plum, with the ₹ coin */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 22px 20px 20px;
+  border-radius: 26px;
+  background: var(--j-story-bg);
+  color: #fff;
+  box-shadow: 0 24px 48px -28px rgba(58, 20, 40, 0.8);
+}
+
+.heroCoin {
+  position: absolute;
+  top: -10px;
+  right: -14px;
+  opacity: 0.9;
+}
+
+.tag {
+  display: inline-block;
+  max-width: 70%;
+  padding: 5px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--j-gold);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 16px 0 14px;
+  font-size: clamp(32px, 9vw, 42px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.title em {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--j-gold);
+  letter-spacing: -0.01em;
+}
+
+.news {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  margin: 0 0 8px;
+  font-size: 16.5px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.news svg {
+  flex: none;
+  margin-top: 2px;
+  color: var(--j-gold);
+}
+
+.for {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 14.5px;
+  line-height: 1.5;
+}
+
+/* the programme in four icon rows */
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.features li {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 12px 2px;
+  color: var(--j-ink);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.features li + li {
+  border-top: 1px solid var(--j-line);
+}
+
+.featureIcon {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: var(--j-accent-soft);
+  color: var(--j-accent);
+}
+
+.featureIcon svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* the promise: three "no"s */
+.promise {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-top: 16px;
+  padding: 16px 18px;
+  border: 1px solid var(--j-line-2);
+  border-radius: 20px;
+  background: var(--j-accent-soft);
+}
+
+.promiseIcon {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  color: var(--j-accent);
+}
+
+.promise ul {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.promise li {
+  color: var(--j-accent-ink);
+  font-size: 15.5px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+/* benefits */
+.benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.benefits li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  color: var(--j-ink-2);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.benefits svg {
+  flex: none;
+  margin-top: 1px;
+  color: var(--j-ok);
+}
+
+/* their sign-off */
+.quote {
+  margin: 22px 0 0;
+  padding: 18px 20px;
+  border-left: 3px solid var(--j-gold-2);
+  border-radius: 0 18px 18px 0;
+  background: var(--j-surface);
+}
+
+.quote p {
+  margin: 0 0 10px;
+  color: var(--j-ink-2);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.quote blockquote {
+  margin: 0;
+  color: var(--j-accent);
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-style: italic;
+  line-height: 1.2;
+}
+
+.quote figcaption {
+  margin-top: 10px;
+  color: var(--j-ink-3);
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.joined {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0 0;
+  color: var(--j-ink-2);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.joined i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--j-ok);
+  box-shadow: 0 0 0 4px var(--j-accent-soft);
+}
+
+.privacy {
+  margin: 16px 0 8px;
+  color: var(--j-ink-3);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.hint {
+  color: var(--j-ink-3);
+  font-size: 13px;
+  text-align: center;
+}
+
+/* a computer shows the big coin in the left pane already */
+@media (min-width: 900px) {
+  .heroCoin {
+    display: none;
+  }
+
+  .tag {
+    max-width: none;
+  }
+}

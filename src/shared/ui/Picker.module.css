@@ -1,0 +1,244 @@
+/* the field: looks like the text boxes beside it */
+.trigger {
+  width: 100%;
+  min-height: 62px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px;
+  border: 2px solid var(--input-border, var(--j-line));
+  border-radius: 18px;
+  background: var(--j-surface);
+  color: var(--j-ink);
+  font: inherit;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+.trigger:focus-visible {
+  border-color: var(--j-accent);
+  box-shadow: 0 0 0 4px var(--j-accent-soft);
+  outline: none;
+}
+
+.invalid {
+  border-color: #c2410c;
+}
+
+.empty .value {
+  color: var(--j-ink-3);
+  font-weight: 500;
+}
+
+.lead {
+  display: flex;
+  color: var(--j-ink-3);
+}
+
+.value {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chevron {
+  flex: none;
+  color: var(--j-ink-3);
+}
+
+/* the sheet: up from the bottom on a phone */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: rgba(33, 15, 25, 0.48);
+  backdrop-filter: blur(3px);
+  animation: fade 0.2s ease;
+}
+
+.sheet {
+  width: 100%;
+  max-height: 86dvh;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 18px calc(env(safe-area-inset-bottom, 0px) + 14px);
+  border-radius: 26px 26px 0 0;
+  background: var(--j-bg);
+  color: var(--j-ink);
+  box-shadow: 0 -20px 50px -20px rgba(0, 0, 0, 0.5);
+  animation: up 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.grip {
+  width: 44px;
+  height: 5px;
+  margin: 2px auto 10px;
+  border-radius: 99px;
+  background: var(--j-line-2);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.head b {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.close {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: var(--j-surface);
+  color: var(--j-ink-2);
+  cursor: pointer;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 0 14px;
+  border: 2px solid var(--j-line);
+  border-radius: 16px;
+  background: var(--j-surface);
+  color: var(--j-ink-3);
+}
+
+.search:focus-within {
+  border-color: var(--j-accent);
+}
+
+.search input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--j-ink);
+  font: inherit;
+  font-size: 17px;
+}
+
+/* the launch states, big and first */
+.featured {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 54px;
+  padding: 0 12px;
+  border: 2px solid var(--j-accent);
+  border-radius: 16px;
+  background: var(--j-accent-soft);
+  color: var(--j-accent-ink);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.chipOn {
+  background: var(--j-accent);
+  color: #fff;
+}
+
+.list {
+  flex: 1;
+  min-height: 0;
+  margin: 12px -6px 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+  overscroll-behavior: contain;
+}
+
+.option {
+  width: 100%;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 14px;
+  background: transparent;
+  color: var(--j-ink);
+  font: inherit;
+  font-size: 17px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.option:hover {
+  background: var(--j-surface);
+}
+
+.optionOn {
+  background: var(--j-accent-soft);
+  color: var(--j-accent-ink);
+  font-weight: 800;
+}
+
+.none {
+  padding: 16px 14px;
+  color: var(--j-ink-3);
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes up {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+}
+
+/* a computer: a centred panel */
+@media (min-width: 700px) {
+  .overlay {
+    align-items: center;
+  }
+
+  .sheet {
+    width: min(480px, 92vw);
+    max-height: min(640px, 86vh);
+    padding: 18px 22px 18px;
+    border-radius: 26px;
+  }
+
+  .grip {
+    display: none;
+  }
+}
